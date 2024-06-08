@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, jsonify
 from flask_restful import Api
 from db import db
 from schemas import ma
@@ -22,8 +22,12 @@ api.add_resource(ItemDetailResource, '/items/<int:item_id>')
 
 app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
-@app.before_first_request
-def create_tables():
+@app.route('/')
+def index():
+    return jsonify({"message": "Welcome to the Auction API"}), 200
+
+# Criação das tabelas
+with app.app_context():
     db.create_all()
 
 if __name__ == '__main__':

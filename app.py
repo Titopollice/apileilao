@@ -7,7 +7,7 @@ from resources import UserResource, ItemResource, BidResource, ItemDetailResourc
 from swagger import swaggerui_blueprint, SWAGGER_URL
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///auction.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql://postgres:kHgXOUGbdIjSJNhZoShLnObQZvfkkVvA@monorail.proxy.rlwy.net:30339/railway')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)

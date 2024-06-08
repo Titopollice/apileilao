@@ -1,205 +1,182 @@
 {
-    "swagger": "2.0",
-    "info": {
+  "swagger": "2.0",
+  "info": {
       "description": "Auction API",
       "version": "1.0.0",
       "title": "Auction API"
-    },
-    "host": "localhost:5000",
-    "basePath": "/",
-    "tags": [
+  },
+  "host": "web-production-0617.up.railway.app",
+  "basePath": "/",
+  "tags": [
       {
-        "name": "user",
-        "description": "Operations about user"
+          "name": "user",
+          "description": "Operations about user"
       },
       {
-        "name": "item",
-        "description": "Operations about item"
+          "name": "item",
+          "description": "Operations about item"
       },
       {
-        "name": "bid",
-        "description": "Operations about bid"
+          "name": "bid",
+          "description": "Operations about bid"
       }
-    ],
-    "paths": {
+  ],
+  "paths": {
       "/users": {
-        "post": {
-          "tags": [
-            "user"
-          ],
-          "summary": "Create a new user",
-          "operationId": "createUser",
-          "parameters": [
-            {
-              "in": "body",
-              "name": "body",
-              "description": "User object that needs to be added to the store",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/User"
+          "post": {
+              "tags": ["user"],
+              "summary": "Create a new user",
+              "operationId": "createUser",
+              "parameters": [
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "description": "User object that needs to be added to the store",
+                      "required": true,
+                      "schema": {
+                          "$ref": "#/definitions/User"
+                      }
+                  }
+              ],
+              "responses": {
+                  "201": {
+                      "description": "User created"
+                  }
               }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "User created"
-            }
           }
-        }
       },
       "/items": {
-        "post": {
-          "tags": [
-            "item"
-          ],
-          "summary": "Create a new item",
-          "operationId": "createItem",
-          "parameters": [
-            {
-              "in": "body",
-              "name": "body",
-              "description": "Item object that needs to be added to the store",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Item"
+          "post": {
+              "tags": ["item"],
+              "summary": "Create a new item",
+              "operationId": "createItem",
+              "parameters": [
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "description": "Item object that needs to be added to the store",
+                      "required": true,
+                      "schema": {
+                          "$ref": "#/definitions/Item"
+                      }
+                  }
+              ],
+              "responses": {
+                  "201": {
+                      "description": "Item created"
+                  }
               }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "Item created"
-            }
+          },
+          "get": {
+              "tags": ["item"],
+              "summary": "Get list of items",
+              "operationId": "getItems",
+              "responses": {
+                  "200": {
+                      "description": "Successful operation"
+                  }
+              }
           }
-        },
-        "get": {
-          "tags": [
-            "item"
-          ],
-          "summary": "Get list of items",
-          "operationId": "getItems",
-          "responses": {
-            "200": {
-              "description": "Successful operation"
-            }
-          }
-        }
       },
       "/items/{itemId}": {
-        "get": {
-          "tags": [
-            "item"
-          ],
-          "summary": "Get item by ID",
-          "operationId": "getItemById",
-          "parameters": [
-            {
-              "name": "itemId",
-              "in": "path",
-              "required": true,
-              "type": "integer",
-              "format": "int64"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Successful operation"
-            }
+          "get": {
+              "tags": ["item"],
+              "summary": "Get item by ID",
+              "operationId": "getItemById",
+              "parameters": [
+                  {
+                      "name": "itemId",
+                      "in": "path",
+                      "required": true,
+                      "type": "integer",
+                      "format": "int64"
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Successful operation"
+                  }
+              }
           }
-        }
       },
       "/bids": {
-        "post": {
-          "tags": [
-            "bid"
-          ],
-          "summary": "Create a new bid",
-          "operationId": "createBid",
-          "parameters": [
-            {
-              "in": "body",
-              "name": "body",
-              "description": "Bid object that needs to be added to the store",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Bid"
+          "post": {
+              "tags": ["bid"],
+              "summary": "Create a new bid",
+              "operationId": "createBid",
+              "parameters": [
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "description": "Bid object that needs to be added to the store",
+                      "required": true,
+                      "schema": {
+                          "$ref": "#/definitions/Bid"
+                      }
+                  }
+              ],
+              "responses": {
+                  "201": {
+                      "description": "Bid created"
+                  }
               }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "Bid created"
-            }
           }
-        }
       }
-    },
-    "definitions": {
+  },
+  "definitions": {
       "User": {
-        "type": "object",
-        "required": [
-          "username",
-          "email",
-          "password"
-        ],
-        "properties": {
-          "username": {
-            "type": "string",
-            "example": "john_doe"
-          },
-          "email": {
-            "type": "string",
-            "example": "john@example.com"
-          },
-          "password": {
-            "type": "string",
-            "example": "password123"
+          "type": "object",
+          "required": ["username", "email", "password"],
+          "properties": {
+              "username": {
+                  "type": "string",
+                  "example": "john_doe"
+              },
+              "email": {
+                  "type": "string",
+                  "example": "john@example.com"
+              },
+              "password": {
+                  "type": "string",
+                  "example": "password123"
+              }
           }
-        }
       },
       "Item": {
-        "type": "object",
-        "required": [
-          "title",
-          "description",
-          "start_bid"
-        ],
-        "properties": {
-          "title": {
-            "type": "string",
-            "example": "Vintage Clock"
-          },
-          "description": {
-            "type": "string",
-            "example": "A beautiful vintage clock from the 19th century."
-          },
-          "start_bid": {
-            "type": "number",
-            "example": 50.0
+          "type": "object",
+          "required": ["title", "description", "start_bid"],
+          "properties": {
+              "title": {
+                  "type": "string",
+                  "example": "Vintage Clock"
+              },
+              "description": {
+                  "type": "string",
+                  "example": "A beautiful vintage clock from the 19th century."
+              },
+              "start_bid": {
+                  "type": "number",
+                  "example": 50.0
+              }
           }
-        }
       },
       "Bid": {
-        "type": "object",
-        "required": [
-          "amount",
-          "user_id",
-          "item_id"
-        ],
-        "properties": {
-          "amount": {
-            "type": "number",
-            "example": 75.0
-          },
-          "user_id": {
-            "type": "integer",
-            "example": 1
-          },
-          "item_id": {
-            "type": "integer",
-            "example": 1
+          "type": "object",
+          "required": ["amount", "user_id", "item_id"],
+          "properties": {
+              "amount": {
+                  "type": "number",
+                  "example": 75.0
+              },
+              "user_id": {
+                  "type": "integer",
+                  "example": 1
+              },
+              "item_id": {
+                  "type": "integer",
+                  "example": 1
+              }
           }
-        }
       }
-    }
   }
-  
+}

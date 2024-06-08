@@ -4,3 +4,4 @@ Flask-SQLAlchemy
 Flask-Marshmallow
 Flask-Swagger-UI
 gunicorn
+marshmallow-sqlalchemy

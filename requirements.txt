@@ -6,3 +6,4 @@ Flask-Swagger-UI
 gunicorn
 marshmallow-sqlalchemy
 psycopg2-binary
+flasgger

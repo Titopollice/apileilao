@@ -2,6 +2,7 @@ import os
 from flask import Flask, jsonify
 from flask_restful import Api
 from flasgger import Swagger
+from flask_cors import CORS
 from db import db
 from schemas import ma
 from resources import UserResource, ItemResource, BidResource, ItemDetailResource
@@ -10,6 +11,10 @@ from swagger import swaggerui_blueprint, SWAGGER_URL
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql://postgres:kHgXOUGbdIjSJNhZoShLnObQZvfkkVvA@monorail.proxy.rlwy.net:30339/railway')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+
+# Habilitar CORS
+CORS(app)
 
 db.init_app(app)
 ma.init_app(app)

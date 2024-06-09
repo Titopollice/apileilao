@@ -8,3 +8,4 @@ marshmallow-sqlalchemy
 psycopg2-binary
 flasgger
 flask-cors
+Flask-Testing
